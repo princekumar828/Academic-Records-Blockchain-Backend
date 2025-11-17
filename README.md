@@ -7,7 +7,7 @@
 
 A production-ready Node.js REST API backend for managing academic records on Hyperledger Fabric blockchain. Built with Express.js and Fabric SDK, featuring comprehensive configuration management, authentication, and real-time event listening.
 
-> **🔗 Related Repository**: [Academic Records Blockchain - Frontend](https://github.com/princekumar828/academic-records-blockchain-frontend)  
+> **🔗 Related Repository**: [Academic Records Blockchain - Frontend]([https://github.com/princekumar828/academic-records-blockchain-frontend](https://github.com/princekumar828/Academic-Records-Blockchain---Frontend))  
 > Modern Angular frontend with Material Design
 
 ---
