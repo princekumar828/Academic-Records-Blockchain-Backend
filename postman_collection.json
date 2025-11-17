@@ -1,0 +1,426 @@
+{
+  "info": {
+    "name": "Academic Records Blockchain API",
+    "description": "Complete API collection for NIT Warangal Academic Records Blockchain",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Students",
+      "item": [
+        {
+          "name": "Create Student",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rollNumber\": \"CS21B001\",\n  \"name\": \"Alice Johnson\",\n  \"department\": \"CSE\",\n  \"enrollmentYear\": 2021,\n  \"email\": \"[email protected]\",\n  \"category\": \"GENERAL\",\n  \"privateData\": {\n    \"aadhaarHash\": \"abc123def456\",\n    \"phone\": \"9876543210\",\n    \"personalEmail\": \"[email protected]\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/students",
+              "host": ["{{baseUrl}}"],
+              "path": ["students"]
+            }
+          }
+        },
+        {
+          "name": "Get Student",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/students/CS21B001",
+              "host": ["{{baseUrl}}"],
+              "path": ["students", "CS21B001"]
+            }
+          }
+        },
+        {
+          "name": "Get Student Private Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/students/CS21B001/private",
+              "host": ["{{baseUrl}}"],
+              "path": ["students", "CS21B001", "private"]
+            }
+          }
+        },
+        {
+          "name": "Update Student Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"newStatus\": \"GRADUATED\",\n  \"reason\": \"Completed all requirements\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/students/CS21B001/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["students", "CS21B001", "status"]
+            }
+          }
+        },
+        {
+          "name": "Update Student Department",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"newDepartment\": \"ECE\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/students/CS21B001/department",
+              "host": ["{{baseUrl}}"],
+              "path": ["students", "CS21B001", "department"]
+            }
+          }
+        },
+        {
+          "name": "Get Students by Department",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/students/department/CSE",
+              "host": ["{{baseUrl}}"],
+              "path": ["students", "department", "CSE"]
+            }
+          }
+        },
+        {
+          "name": "Get Students by Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/students/status/ACTIVE",
+              "host": ["{{baseUrl}}"],
+              "path": ["students", "status", "ACTIVE"]
+            }
+          }
+        },
+        {
+          "name": "Get Students by Year",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/students/year/2021?pageSize=50",
+              "host": ["{{baseUrl}}"],
+              "path": ["students", "year", "2021"],
+              "query": [
+                {
+                  "key": "pageSize",
+                  "value": "50"
+                },
+                {
+                  "key": "bookmark",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get All Students",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/students/all",
+              "host": ["{{baseUrl}}"],
+              "path": ["students", "all"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Academic Records",
+      "item": [
+        {
+          "name": "Create Academic Record",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recordID\": \"REC_CS21B001_SEM1\",\n  \"rollNumber\": \"CS21B001\",\n  \"semester\": 1,\n  \"department\": \"CSE\",\n  \"courses\": [\n    {\n      \"courseCode\": \"CS101\",\n      \"courseName\": \"Data Structures\",\n      \"credits\": 4,\n      \"grade\": \"A\"\n    },\n    {\n      \"courseCode\": \"CS102\",\n      \"courseName\": \"Algorithms\",\n      \"credits\": 4,\n      \"grade\": \"A\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/records",
+              "host": ["{{baseUrl}}"],
+              "path": ["records"]
+            }
+          }
+        },
+        {
+          "name": "Get Academic Record",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/records/REC_CS21B001_SEM1",
+              "host": ["{{baseUrl}}"],
+              "path": ["records", "REC_CS21B001_SEM1"]
+            }
+          }
+        },
+        {
+          "name": "Approve Academic Record",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/records/REC_CS21B001_SEM1/approve",
+              "host": ["{{baseUrl}}"],
+              "path": ["records", "REC_CS21B001_SEM1", "approve"]
+            }
+          }
+        },
+        {
+          "name": "Get Student Records",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/records/student/CS21B001",
+              "host": ["{{baseUrl}}"],
+              "path": ["records", "student", "CS21B001"]
+            }
+          }
+        },
+        {
+          "name": "Query Pending Records",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/records/pending/all",
+              "host": ["{{baseUrl}}"],
+              "path": ["records", "pending", "all"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Certificates",
+      "item": [
+        {
+          "name": "Issue Certificate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"certificateID\": \"CERT001\",\n  \"studentID\": \"CS21B001\",\n  \"certType\": \"DEGREE\",\n  \"pdfBase64\": \"base64_encoded_pdf_here\",\n  \"ipfsHash\": \"QmExampleHash123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/certificates",
+              "host": ["{{baseUrl}}"],
+              "path": ["certificates"]
+            }
+          }
+        },
+        {
+          "name": "Get Certificate",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/certificates/CERT001",
+              "host": ["{{baseUrl}}"],
+              "path": ["certificates", "CERT001"]
+            }
+          }
+        },
+        {
+          "name": "Verify Certificate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"certificateID\": \"CERT001\",\n  \"pdfHash\": \"hash_of_pdf_document\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/certificates/verify",
+              "host": ["{{baseUrl}}"],
+              "path": ["certificates", "verify"]
+            }
+          }
+        },
+        {
+          "name": "Get Student Certificates",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/certificates/student/CS21B001",
+              "host": ["{{baseUrl}}"],
+              "path": ["certificates", "student", "CS21B001"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Identity Management",
+      "item": [
+        {
+          "name": "Enroll Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"admin\",\n  \"password\": \"adminpw\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/identities/admin/enroll",
+              "host": ["{{baseUrl}}"],
+              "path": ["identities", "admin", "enroll"]
+            }
+          }
+        },
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"user1\",\n  \"role\": \"client\",\n  \"attributes\": {\n    \"role\": \"dean\",\n    \"department\": \"CSE\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/identities/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["identities", "register"]
+            }
+          }
+        },
+        {
+          "name": "List Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/identities",
+              "host": ["{{baseUrl}}"],
+              "path": ["identities"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "item": [
+        {
+          "name": "Get Event Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["events", "status"]
+            }
+          }
+        },
+        {
+          "name": "Start Event Listener",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events/start",
+              "host": ["{{baseUrl}}"],
+              "path": ["events", "start"]
+            }
+          }
+        },
+        {
+          "name": "Stop Event Listener",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events/stop",
+              "host": ["{{baseUrl}}"],
+              "path": ["events", "stop"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

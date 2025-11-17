@@ -1,0 +1,12 @@
+[
+  {
+    "id": "admin",
+    "username": "admin",
+    "email": "admin@nitw.ac.in",
+    "passwordHash": "$2a$10$zz1VEUTAqdIrNOTsqOhrG.dWZvI.0aancM5mMlnZTKt3u0SS9JHuO",
+    "role": "admin",
+    "department": null,
+    "createdAt": "2025-11-13T14:15:52.331Z",
+    "isActive": true
+  }
+]
